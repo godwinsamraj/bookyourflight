@@ -1,6 +1,4 @@
-FROM maven:3.8.5-openjdk-17 AS build
-COPY . .
-FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/com/flightticketbooking-0.0.1-SNAPSHOT.jar flightticketbooking.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","flightticketbooking.jar"]
+FROM openjdk:8-jdk-alpine
+MAINTAINER baeldung.com
+COPY target/docker-bookyourflight-1.0.0.jar bookyourflight-1.0.0.jar
+ENTRYPOINT ["java","-jar","/bookyourflight-1.0.0.jar"]
